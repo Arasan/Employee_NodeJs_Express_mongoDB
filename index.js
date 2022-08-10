@@ -18,10 +18,12 @@ mongoose.connect("mongodb://localhost:27017/Mean_Employee_Details", {
       process.exit();
    });
 //database end
-//port
+
+// Setup server port
 const port = process.env.PORT || 3000; 
 app.set('port',port);
 
+// Launch app to listen to specified port
 app.listen(port, () => {
    console.log(`Server Started at ${port}`)
 })

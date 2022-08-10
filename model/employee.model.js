@@ -5,13 +5,17 @@ const employeeSchema = new mongoose.Schema({
       type: String,
       required: true
    },
-   age: {
+   email: {
+      type: String,
+      required: true
+   },
+   phone: {
       type: Number,
       required: true
    },
-   birthyear: {
-      type: Number,
-      required: true
-   }
+   gender: {
+    type: String,
+    required: true
+ }
 })
 module.exports = mongoose.model("employeeSchema", employeeSchema);

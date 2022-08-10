@@ -1,4 +1,12 @@
 const modelEmployee = require("../model/employee.model");
+
+// Set default API response
+exports.defaultapi = function (req, res) {   
+    res.json(
+        {status: "API Its Working",
+         message: 'Welcome to MEAN project'});
+ }
+
 /* get all employee details */
 exports.getallemployee = function (req, res) {
    // find() to get all records
@@ -17,8 +25,9 @@ exports.createemployee = function (req, res) {
    // save() to save single payload
    const savedetails = new modelEmployee({
       name: req.body.name,
-      age: req.body.age,
-      birthyear: req.body.birthyear
+      email: req.body.email,
+      phone: req.body.phone,
+      gender: req.body.gender
    })
    try {
       savedetails.save();
