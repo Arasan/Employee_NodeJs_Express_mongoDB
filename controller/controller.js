@@ -10,8 +10,9 @@ exports.defaultapi = function (req, res) {
 /* get all employee details */
 exports.getallemployee = function (req, res) {
    // find() to get all records
-   modelEmployee.find().then(data => {
-         res.send(data);
+   modelEmployee.find().then(alldetails => {
+         //res.send(alldetails);
+         res.json({ status: 'success',data: alldetails});
       })
       .catch(err => {
          res.status(500).send({
@@ -21,7 +22,7 @@ exports.getallemployee = function (req, res) {
 }
 
 /* create new  employee details */
-exports.createemployee = function (req, res) {
+exports.createemployee = async(req, res)=> {
    // save() to save single payload
    const savedetails = new modelEmployee({
       name: req.body.name,
@@ -31,7 +32,8 @@ exports.createemployee = function (req, res) {
    })
    try {
       savedetails.save();
-      res.status(200).json(savedetails);
+      //res.status(200).json(savedetails);
+      res.json({ status: 'success',data: savedetails});
    } catch (error) {
       res.status(400).json({
          message: error.message
@@ -42,8 +44,9 @@ exports.createemployee = function (req, res) {
 /* get employee details by ID */
 exports.getbyID = function (req, res) {
    // findById() get single record
-   modelEmployee.findById(req.params.id).then(data => {
-         res.send(data);
+   modelEmployee.findById(req.params.id).then(details => {
+         //res.send(details);
+           res.json({ status: 'success',data: details});
       })
       .catch(err => {
          res.status(500).send({

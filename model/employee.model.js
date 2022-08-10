@@ -16,6 +16,10 @@ const employeeSchema = new mongoose.Schema({
    gender: {
     type: String,
     required: true
- }
+ },
+ create_date: {
+   type: Date,
+   default: Date.now
+}
 })
 module.exports = mongoose.model("employeeSchema", employeeSchema);
